@@ -1,0 +1,43 @@
+From e07fe8d9d38d1a0b9732d7c730c3cd73b5a8a492 Mon Sep 17 00:00:00 2001
+From: Rinigus <rinigus.git@gmail.com>
+Date: Thu, 27 Apr 2023 22:19:54 +0300
+Subject: [PATCH] Use pkg-config to find EGL
+
+---
+ CMakeLists.txt            | 6 ++++--
+ src/server/CMakeLists.txt | 2 +-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9cf9778..c71e5a9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,8 +62,10 @@ find_package(WaylandScanner)
+ find_package(WaylandProtocols 1.15)
+ set_package_properties(WaylandProtocols PROPERTIES TYPE REQUIRED)
+ 
+-find_package(EGL)
+-set_package_properties(EGL PROPERTIES TYPE REQUIRED)
++#find_package(EGL)
++#set_package_properties(EGL PROPERTIES TYPE REQUIRED)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(EGL REQUIRED IMPORTED_TARGET egl)
+ 
+ find_package(PlasmaWaylandProtocols 1.9.0 CONFIG)
+ set_package_properties(PlasmaWaylandProtocols PROPERTIES TYPE REQUIRED)
+diff --git a/src/server/CMakeLists.txt b/src/server/CMakeLists.txt
+index 16db426..29d25ec 100644
+--- a/src/server/CMakeLists.txt
++++ b/src/server/CMakeLists.txt
+@@ -319,7 +319,7 @@ target_link_libraries(KF5WaylandServer
+     PUBLIC Qt5::Gui
+     PRIVATE
+         Wayland::Server
+-        EGL::EGL
++        PkgConfig::EGL
+         Qt5::Concurrent
+ )
+ 
+-- 
+2.39.2
+
