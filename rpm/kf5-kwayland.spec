@@ -1,9 +1,9 @@
-%global kf5_version 5.105.0
+%global kf5_version 5.106.0
 
 %global wayland_min_version 1.3
 
 Name: opt-kf5-kwayland
-Version: 5.105.0
+Version: 5.106.0
 Release: 3%{?dist}
 Summary: KDE Frameworks 5 library that wraps Client and Server Wayland libraries
 
