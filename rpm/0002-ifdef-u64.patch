@@ -1,0 +1,13 @@
+diff --git a/src/server/drm_fourcc.h b/src/server/drm_fourcc.h
+index 5112499..f57b843 100644
+--- a/src/server/drm_fourcc.h
++++ b/src/server/drm_fourcc.h
+@@ -13,7 +13,7 @@
+ 
+ // These typedefs are copied from drm.h
+ typedef uint32_t __u32;
+-typedef uint64_t __u64;
++typedef unsigned long long __u64;
+ 
+ #if defined(__cplusplus)
+ extern "C" {

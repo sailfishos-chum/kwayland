@@ -12,6 +12,7 @@ URL:     https://invent.kde.org/frameworks/kwayland
 Source0: %{name}-%{version}.tar.bz2
 
 Patch1: 0001-Use-pkg-config-to-find-EGL.patch
+Patch2: 0002-ifdef-u64.patch
 
 %{?opt_kf5_default_filter}
 
